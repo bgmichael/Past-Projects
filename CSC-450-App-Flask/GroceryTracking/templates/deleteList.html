@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block content %}
+<div>
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <fieldset class="form-group">
+            <div class="form-group">
+
+                    {{ form.listOfLists.label(class_="form-control-label") }}
+                    {{ form.listOfLists(class="form-control form-control") }}
+
+            </div>
+        </fieldset>
+        <div class="form-group">
+            <a class="btn btn-danger btn-block btn-lg" type="button" href="{{ url_for('listManagement') }}">Back</font></a>
+            <button type="submit" class="btn btn-primary btn-block btn-lg">Delete</button>
+        </div>
+    </form>
+</div>
+{% endblock content %}
+{% block back %}
+    <a class="btn btn-outline-dark btn-sm" href="{{ url_for('listManagement') }}">Go back</a>
+{% endblock back %}

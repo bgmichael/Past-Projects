@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block content %}
+<div>
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <fieldset class="form-group">
+            <div class="form-group">
+
+                    {{ form.username.label(class_="form-control-label") }}
+                    {{ form.username(class="form-control form-control") }}
+
+                    {{ form.email.label(class_="form-control-label") }}
+                    {{ form.email(class="form-control form-control") }}
+
+            </div>
+        </fieldset>
+        <div class="form-group">
+            <a class="btn btn-danger btn-block btn-lg" type="button" href="{{ url_for('settings') }}">Back</a>
+            <button type="submit" class="btn btn-primary btn-block btn-lg">Submit</button>
+        </div>
+    </form>
+</div>
+
+
+{% endblock content %}
+{% block back %}
+    <a class="btn btn-outline-dark btn-sm" href="{{ url_for('settings') }}">Go back</a>
+{% endblock back %}
