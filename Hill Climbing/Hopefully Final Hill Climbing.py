@@ -127,7 +127,7 @@ def all_subsetsButEmpty(problem):
     fullSuperSet = fullSuperSet + s2
     return fullSuperSet
 
-def all_subsetsButEmpty(problem):
+def all_subsetsButEmpty2(problem):
     '''
     Generate all of the subsets of a list (but exclude the empty
     list). This method generates the power set of a list (minus the empty set).
@@ -187,7 +187,7 @@ def mapIntegerToVector(number, bits):
     return vector
 
 
-def gen_solution(problem):
+def gen_solution2(problem):
     '''
     Generates a random subset of problem.
     :param problem: A list (or multiset).
@@ -430,67 +430,67 @@ def Check_neighbors(problem_list, sub_problem_list, point_to_check):
     return problem_list, sub_problem_list, changed_values, sub_list_index_list, Left, Right, point_to_check
 
 
-# def Check_All_Sublist(problem_list, sub_list):
-#     '''
-#     Should check all the potential neighbors of a sublist
-#     :param problem_list: The whole list
-#     :param sub_list: The sublist to be checked and changed
-#     :return: The changed lists
-#     '''
-#     guess_check_counter = 0
-#
-#     if sum(sub_list) == 0:
-#         return sub_list
-#     stop = False
-#     temp_sub_list = sub_list.copy()
-#     iterator = 0
-#     ######################## Trying to Account for opposite values#####################
-#     sorted_sub_list = sorted(sub_list)
-#     abs_pos_sub_list = []
-#     abs_neg_sub_list = []
-#     for x in sorted_sub_list:
-#         if x < 0:
-#             new_entry = abs(x)
-#             abs_neg_sub_list.append(new_entry)
-#         if x > 0:
-#             new_entry = abs(x)
-#             abs_pos_sub_list.append(new_entry)
-#     for i in abs_pos_sub_list:
-#         if i in abs_neg_sub_list:
-#             opposite_list = [i, (i * (-1))]
-#             return opposite_list
-#     #################################################################
-#
-#     for i in range(len(temp_sub_list)):
-#         j = i + 1
-#         if j >= len(temp_sub_list):
-#             j = j - 1
-#         elif sub_list[i] + sub_list[j] == 0:
-#             opposite_list = [sub_list[i], sub_list[j]]
-#             return opposite_list
-#
-#     ##################################################
-#     second_loop = 0
-#     loop_val = (len(problem_list) * 15)
-#     while second_loop < loop_val:
-#         # point_to_check_index = (random.randint(1, 100)) % (len(temp_sub_list))
-#         length = len(temp_sub_list)
-#         if length < 2:
-#             length = length + 1
-#         point_to_check_index = random.randint(0, length)
-#         if point_to_check_index == len(temp_sub_list):
-#             point_to_check_index = point_to_check_index - 1
-#         print("point_to_check_index: ", point_to_check_index)
-#         point_to_check = temp_sub_list[point_to_check_index]
-#         new_vals = Check_neighbors(problem_list, temp_sub_list, point_to_check)
-#         guess_check_counter = guess_check_counter + 1
-#         temp_sub_list = new_vals[1]
-#         second_loop = second_loop + 1
-#         if sum(temp_sub_list) == 0:
-#             second_loop = loop_val
-#
-#     return temp_sub_list, guess_check_counter
-#
+def Check_All_Sublist(problem_list, sub_list):
+    '''
+    Should check all the potential neighbors of a sublist
+    :param problem_list: The whole list
+    :param sub_list: The sublist to be checked and changed
+    :return: The changed lists
+    '''
+    guess_check_counter = 0
+
+    if sum(sub_list) == 0:
+        return sub_list
+    stop = False
+    temp_sub_list = sub_list.copy()
+    iterator = 0
+    ######################## Trying to Account for opposite values#####################
+    sorted_sub_list = sorted(sub_list)
+    abs_pos_sub_list = []
+    abs_neg_sub_list = []
+    for x in sorted_sub_list:
+        if x < 0:
+            new_entry = abs(x)
+            abs_neg_sub_list.append(new_entry)
+        if x > 0:
+            new_entry = abs(x)
+            abs_pos_sub_list.append(new_entry)
+    for i in abs_pos_sub_list:
+        if i in abs_neg_sub_list:
+            opposite_list = [i, (i * (-1))]
+            return opposite_list
+    #################################################################
+
+    for i in range(len(temp_sub_list)):
+        j = i + 1
+        if j >= len(temp_sub_list):
+            j = j - 1
+        elif sub_list[i] + sub_list[j] == 0:
+            opposite_list = [sub_list[i], sub_list[j]]
+            return opposite_list
+
+    ##################################################
+    second_loop = 0
+    loop_val = (len(problem_list) * 15)
+    while second_loop < loop_val:
+        # point_to_check_index = (random.randint(1, 100)) % (len(temp_sub_list))
+        length = len(temp_sub_list)
+        if length < 2:
+            length = length + 1
+        point_to_check_index = random.randint(0, length)
+        if point_to_check_index == len(temp_sub_list):
+            point_to_check_index = point_to_check_index - 1
+        print("point_to_check_index: ", point_to_check_index)
+        point_to_check = temp_sub_list[point_to_check_index]
+        new_vals = Check_neighbors(problem_list, temp_sub_list, point_to_check)
+        guess_check_counter = guess_check_counter + 1
+        temp_sub_list = new_vals[1]
+        second_loop = second_loop + 1
+        if sum(temp_sub_list) == 0:
+            second_loop = loop_val
+
+    return temp_sub_list, guess_check_counter
+
 
 def Hill_Climber_Main(length_of_problem_list):
     length = length_of_problem_list
